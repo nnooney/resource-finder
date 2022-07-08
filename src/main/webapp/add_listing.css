@@ -1,0 +1,103 @@
+/* header and whole-page styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+  }
+  
+  .logo {
+      color: black;
+      cursor: pointer;
+      margin-right: auto;
+  }
+  
+  li, a, button {
+      font-weight: 500;
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+  }
+  
+  header{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 30px 10%;
+  }
+  
+  .nav-link {
+      list-style: none;
+  }
+  
+  .nav-link li {
+      display: inline-block;
+      padding: 0px 20px;
+  }
+  
+  .nav-link li a {
+      transition: all 0.3s ease 0s;
+  }
+  
+  .nav-link li a:hover {
+      color: blue;
+  }
+  
+  button {
+      padding: 9px 25px;
+      background-color: rgba(0, 136, 139, 1);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+  }
+  
+  button:hover {
+      background-color: rgba(0, 136, 169, 0.8);
+  }
+
+.page-content {
+    background-color: #eee;
+    height: 100%;
+}
+
+/* form styles */
+
+#add-listing-form {
+    margin: auto;
+    height: 100vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    justify-content: start;
+}
+
+#add-listing-form label{
+    margin:auto;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    background-color: transparent;
+}
+
+h2 {
+    margin-top: 20px;
+    background-color: transparent;
+}
+
+#add-listing-form input{
+    height: 40px;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    color: rgb(114, 111, 111);
+}
+
+#add-listing-form button{
+    background-color: transparent;
+    border: solid 3px black;
+    border-radius: 5px;
+}
