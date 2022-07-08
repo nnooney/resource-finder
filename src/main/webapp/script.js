@@ -12,17 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+/** Fetches houses from the server and adds them to the DOM. */
+function loadHouses() {
+    fetch('/list-houses').then(response => response.json()).then((houses) => {
+      const houseListElement = document.getElementById('house-list');
+      houses.forEach((house) => {
+        houseListElement.appendChild(createHouseElement(house));
+      })
+    });
+  }
+  
+  /** Creates an element that represents a house, including its delete button. */
+  function createHouseElement(house) {
+    const houseElement = document.createElement('li');
+    houseElement.className = 'house';
+  
+    const nameElement = document.createElement('span');
+    nameElement.innerText = task.name;
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+    const descriptionElement = document.createElement('span');
+    descriptionElement.innerText = task.description;
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
+    const costElement = document.createElement('span');
+    costElement.innerText = task.cost;
+  
+    const deleteButtonElement = document.createElement('button');
+    deleteButtonElement.innerText = 'Delete';
+    deleteButtonElement.addEventListener('click', () => {
+      deleteHouse(house);
+  
+      // Remove the house from the DOM.
+      houseElement.remove();
+    });
+  
+    houseElement.appendChild(nameElement);
+    houseElement.appendChild(descriptionElement);
+    houseElement.appendChild(costElement);
+    houseElement.appendChild(deleteButtonElement);
+    return houseElement;
+  }
+  
+  /** Tells the server to delete the task. */
+  function deleteHouse(house) {
+    const params = new URLSearchParams();
+    params.append('id', house.id);
+    fetch('/delete-house', {method: 'POST', body: params});
+  }
