@@ -28,13 +28,13 @@ function loadHouses() {
     houseElement.className = 'house';
   
     const nameElement = document.createElement('span');
-    nameElement.innerText = task.name;
+    nameElement.innerText = house.name;
 
     const descriptionElement = document.createElement('span');
-    descriptionElement.innerText = task.description;
+    descriptionElement.innerText = house.description;
 
     const costElement = document.createElement('span');
-    costElement.innerText = task.cost;
+    costElement.innerText = house.cost;
   
     const deleteButtonElement = document.createElement('button');
     deleteButtonElement.innerText = 'Delete';
