@@ -55,18 +55,18 @@ button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
-.house-list {
+.house-rec-list {
     padding: 5px;
     background-color: #eee;
     padding: 30px 10%;
 
 }
 
-.house-list h2 {
+.house-rec-list h2 {
     background-color: #eee;
 }
 
-.house-list > h2,
+.house-rec-list > h2,
 .house-data {
     margin: 8px;
     padding: 5px;
