@@ -21,6 +21,11 @@
           </header>
 
           <section class="house-list page-content">
+
+            <script>
+                loadHouses();
+            </script>
+
               <h2>List of Recommended Housing</h2>
               <article class="house-data">
                   <h3 class="house-name">Housing Listing #1</h3>
@@ -42,28 +47,15 @@
                   <h3 class="house-name">Housing Listing #5</h3>
                   <h3 class="house-price">$1000</h3>
               </article> 
-              
 
-              <hr>
-             <article onload="loadHouses()">
-                  <form method="POST" action="/new-house">
-                      <label for="address">Address:</label>
-                      <input type="text" name="name"/>
-                      <br/>
-                      <label for="description">Description:</label>
-                      <input type="text" name="description"/>
-                      <br/>
-                      <label for="cost">Cost:</label>
-                      <input type="text" name="cost"/>
-                      <br/>
-                      <button>Submit</button>
-                  </form>
+             
+                  
+            <div id="house-list">
 
-                  <hr/>
+            </div>
 
-                  <ul id="house-list"></ul>
+             
 
-             </article>
         </section>
   </body>
 </html>
