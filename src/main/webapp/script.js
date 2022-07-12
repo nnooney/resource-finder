@@ -24,31 +24,36 @@ function loadHouses() {
   
   /** Creates an element that represents a house, including its delete button. */
   function createHouseElement(house) {
-    const houseElement = document.createElement('li');
-    houseElement.className = 'house';
+    const houseElement = document.createElement('article');
+    houseElement.className = 'house-data';
   
-    const nameElement = document.createElement('span');
+    const nameElement = document.createElement('h3');
     nameElement.innerText = house.name;
+    nameElement.className = 'house-name';
 
-    const descriptionElement = document.createElement('span');
+    const descriptionElement = document.createElement('p');
     descriptionElement.innerText = house.description;
 
-    const costElement = document.createElement('span');
+    const costElement = document.createElement('h3');
     costElement.innerText = house.cost;
+    nameElement.className = 'house-price';
+
+    // DELETE BUTTON : doesn't make sense to include on the client-side of the webapp, but maybe
+    // useful to include if we were to make an admin panel where admin of the app can delete fraudulent listing
+    // *
+    // const deleteButtonElement = document.createElement('button');
+    // deleteButtonElement.innerText = 'Delete';
+    // deleteButtonElement.addEventListener('click', () => {
+    //   deleteHouse(house);
   
-    const deleteButtonElement = document.createElement('button');
-    deleteButtonElement.innerText = 'Delete';
-    deleteButtonElement.addEventListener('click', () => {
-      deleteHouse(house);
-  
-      // Remove the house from the DOM.
-      houseElement.remove();
-    });
+    //   // Remove the house from the DOM.
+    //   houseElement.remove();
+    // });
   
     houseElement.appendChild(nameElement);
     houseElement.appendChild(descriptionElement);
     houseElement.appendChild(costElement);
-    houseElement.appendChild(deleteButtonElement);
+    // houseElement.appendChild(deleteButtonElement);
     return houseElement;
   }
   
