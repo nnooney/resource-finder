@@ -12,10 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+
+// if no value
+
 /** Fetches houses from the server and adds them to the DOM. */
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
+      houseListElement.innerHTML = '';
+      
+      // filter for houses cheaper than $1000
+      houses = houses.filter(priceFilter);
+
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
@@ -62,4 +71,22 @@ function loadHouses() {
     const params = new URLSearchParams();
     params.append('id', house.id);
     fetch('/delete-house', {method: 'POST', body: params});
+  }
+
+//   filer list of houses fetched from datasotre by price
+function priceFilter(house) {
+    // get price filer data
+    try{
+        lower = document.getElementById('lower').value;
+    }
+    catch{
+        lower = 0;
+    }
+    try{
+        upper = document.getElementById('upper').value || 1200;
+    }catch{
+        upper = 4000;
+    }
+    // apply filter
+    return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
   }
