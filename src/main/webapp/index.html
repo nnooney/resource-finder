@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Resource Finder</title>
+    <title>Home Finder</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
@@ -17,10 +17,15 @@
                       <li><a href="#">Review</a></li>
                   </ul>
               </nav>
-              <a class="log-in" a href="#"><button>Log In</button></a>
+              <!--<a class="log-in" a href="#"><button>Log In</button></a>-->
           </header>
 
           <section class="house-list page-content">
+
+            <script>
+                loadHouses();
+            </script>
+
               <h2>List of Recommended Housing</h2>
               <article class="house-data">
                   <h3 class="house-name">Housing Listing #1</h3>
@@ -42,9 +47,15 @@
                   <h3 class="house-name">Housing Listing #5</h3>
                   <h3 class="house-price">$1000</h3>
               </article> 
-        </section>
-    
-     
 
+             
+                  
+            <div id="house-list">
+
+            </div>
+
+             
+
+        </section>
   </body>
 </html>
