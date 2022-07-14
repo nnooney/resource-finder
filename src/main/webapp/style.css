@@ -55,10 +55,18 @@ button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
-
-
-.house-list {
+.filter-title, .filter-price{
+    margin: 8px;
     padding: 5px;
+    font-size: 1rem;
+    background-color: #eee;
+}
+
+.filter-price button{
+    padding: 5px 25px;
+
+}
+.house-list {
     background-color: #eee;
     padding: 30px 10%;
 
@@ -68,7 +76,7 @@ button:hover {
     background-color: #eee;
 }
 
-.house-list > h2,
+.house-list > h2, 
 .house-data {
     margin: 8px;
     padding: 5px;
@@ -76,20 +84,38 @@ button:hover {
    
 }
 
+.house-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    background:#eee;
+}
 .house-data {
     padding: 9px 25px;
     border-radius: 10px;
     background: white;
-    display: flex;
-    justify-content: flex-end;
+    
+    display: block;
+    /*justify-content: flex-end;*/
 }
 
-.house-name{
-    font-size: 16px;
+.house-name, .house-address, .house-schoool, .house-description, .house-price{
     margin-right: auto;
     padding: 5px;
 }
 
+.house-name{
+    font-size: 16px;
+}
+.house-address, .house-school{
+    font-size: 13px;
+}
+.house-description {
+    font-size: 10px;
+}
+
+.house-price{
+    font-size: 15px;
+}
 
 /* slider style */
 

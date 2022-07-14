@@ -21,6 +21,8 @@ public class NewHouseServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Sanitize user input to remove HTML tags and JavaScript.
     String name = Jsoup.clean(request.getParameter("name"), Safelist.none());
+    String address = Jsoup.clean(request.getParameter("address"), Safelist.none());
+    String school = Jsoup.clean(request.getParameter("school"), Safelist.none());
     String description = Jsoup.clean(request.getParameter("description"), Safelist.none());
     String cost = Jsoup.clean(request.getParameter("cost"), Safelist.none()); /**cost is in int or long */
     long timestamp = System.currentTimeMillis();
@@ -30,6 +32,8 @@ public class NewHouseServlet extends HttpServlet {
     FullEntity houseEntity =
         Entity.newBuilder(keyFactory.newKey())
             .set("name", name)
+            .set("address", address)
+            .set("school", school)
             .set("description", description)
             .set("cost", cost)
             .set("timestamp", timestamp)

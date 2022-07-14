@@ -40,37 +40,29 @@ function loadHouses() {
     nameElement.innerText = house.name;
     nameElement.className = 'house-name';
 
-    const descriptionElement = document.createElement('p');
+    const addressElement = document.createElement("h4");
+    addressElement.innerHTML = house.address;
+    addressElement.className = "house-address";
+
+    const schoolElement = document.createElement("h4");
+    schoolElement.innerHTML = house.schoool;
+    schoolElement.className = "house-school";
+
+    const descriptionElement = document.createElement('ul');
     descriptionElement.innerText = house.description;
+    descriptionElement.className = "house-description"
+
 
     const costElement = document.createElement('h3');
     costElement.innerText = house.cost;
-    nameElement.className = 'house-price';
-
-    // DELETE BUTTON : doesn't make sense to include on the client-side of the webapp, but maybe
-    // useful to include if we were to make an admin panel where admin of the app can delete fraudulent listing
-    // *
-    // const deleteButtonElement = document.createElement('button');
-    // deleteButtonElement.innerText = 'Delete';
-    // deleteButtonElement.addEventListener('click', () => {
-    //   deleteHouse(house);
-  
-    //   // Remove the house from the DOM.
-    //   houseElement.remove();
-    // });
+    costElement.className = 'house-price';
   
     houseElement.appendChild(nameElement);
+    houseElement.appendChild(addressElement);
+    houseElement.appendChild(schoolElement);
     houseElement.appendChild(descriptionElement);
     houseElement.appendChild(costElement);
-    // houseElement.appendChild(deleteButtonElement);
     return houseElement;
-  }
-  
-  /** Tells the server to delete the task. */
-  function deleteHouse(house) {
-    const params = new URLSearchParams();
-    params.append('id', house.id);
-    fetch('/delete-house', {method: 'POST', body: params});
   }
 
 //   filer list of houses fetched from datasotre by price
