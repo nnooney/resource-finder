@@ -39,7 +39,7 @@ header{
 }
 
 .nav-link li a:hover {
-    color: blue;
+    color: rgba(0, 136, 139, 1);
 }
 
 button {
@@ -63,7 +63,7 @@ button:hover {
 }
 
 .filter-price button{
-    padding: 5px 25px;
+    padding: 4px 20px;
 
 }
 .house-list {
@@ -89,16 +89,18 @@ button:hover {
     grid-template-columns: 1fr 1fr 1fr; 
     background:#eee;
 }
+
+article {
+    background:#eee;    
+}
 .house-data {
     padding: 9px 25px;
     border-radius: 10px;
-    background: white;
-    
+    background: white;   
     display: block;
-    /*justify-content: flex-end;*/
 }
 
-.house-name, .house-address, .house-schoool, .house-description, .house-price{
+.house-name, .house-address, .house-school, .house-description, .house-price{
     margin-right: auto;
     padding: 5px;
 }
@@ -109,8 +111,9 @@ button:hover {
 .house-address, .house-school{
     font-size: 13px;
 }
-.house-description {
-    font-size: 10px;
+.house-description li {
+    font-size: 12px;
+    padding: 3px;
 }
 
 .house-price{

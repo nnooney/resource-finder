@@ -9,7 +9,7 @@
 
   <body>
           <header>
-              <h1 class="logo">Resource Finder</h1>
+              <h1 class="logo">Home Finder</h1>
               <nav>
                   <ul class="nav-link">
                       <li><a href="#">View</a></li>
@@ -27,6 +27,24 @@
             <script>
                 loadHouses();
             </script>
+
+            <!-- filter controls -->
+    
+            <!-- price filer -->
+          
+                <h4 class="filter-title">Filter by Price</h4>
+                <span class="filter-price">
+                    <input type="text" placeholder="800" id="lower">
+                    <input type="text" placeholder="1200" id="upper">
+                    <!-- apply filers button -->
+                  <button onclick="loadHouses()">Apply filters</button>
+                  </span>
+
+           
+            
+
+            
+     
            
             <!-- listings -->
             <h2>List of Recommended Housing</h2>

@@ -20,6 +20,11 @@
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
+      // styling
+      houseListElement.setAttribute(
+          'style',
+          'background: #eee'
+      );
       houseListElement.innerHTML = '';
       
       // filter for houses cheaper than $1000
@@ -31,10 +36,15 @@ function loadHouses() {
     });
   }
   
-  /** Creates an element that represents a house, including its delete button. */
+  /** Creates an element that represents a house. */
   function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
+    // styling
+    houseElement.setAttribute(
+        'style',
+        'background: #white'
+    );
   
     const nameElement = document.createElement('h3');
     nameElement.innerText = house.name;
@@ -48,9 +58,13 @@ function loadHouses() {
     schoolElement.innerHTML = house.schoool;
     schoolElement.className = "house-school";
 
-    const descriptionElement = document.createElement('ul');
+    const descriptionElement = document.createElement('li');
     descriptionElement.innerText = house.description;
     descriptionElement.className = "house-description"
+    descriptionElement.setAttribute(
+        'style',
+        'font-size: 12px;  padding: 3px;'
+    );
 
 
     const costElement = document.createElement('h3');
