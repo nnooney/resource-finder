@@ -108,7 +108,7 @@ article {
 .house-name{
     font-size: 16px;
 }
-.house-address, .house-school{
+.house-address, .house-school .house-amenities{
     font-size: 13px;
 }
 .house-description li {
@@ -118,6 +118,7 @@ article {
 
 .house-price{
     font-size: 15px;
+    width: 100%;
 }
 
 /* slider style */

@@ -20,16 +20,16 @@
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
-      // styling
-      houseListElement.setAttribute(
-          'style',
-          'background: #eee'
-      );
+    //   // styling
+    //   houseListElement.setAttribute(
+    //       'style',
+    //       'background: #eee'
+    //   );
       houseListElement.innerHTML = '';
       
-      // filter for houses cheaper than $1000
+      // filter for houses bt price
       houses = houses.filter(priceFilter);
-
+      
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
@@ -40,11 +40,11 @@ function loadHouses() {
   function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
-    // styling
-    houseElement.setAttribute(
-        'style',
-        'background: #white'
-    );
+    // // styling
+    // houseElement.setAttribute(
+    //     'style',
+    //     'background: #white'
+    // );
   
     const nameElement = document.createElement('h3');
     nameElement.innerText = house.name;
@@ -55,23 +55,29 @@ function loadHouses() {
     addressElement.className = "house-address";
 
     const schoolElement = document.createElement("h4");
-    schoolElement.innerHTML = house.schoool;
+    schoolElement.innerHTML = house.school;
     schoolElement.className = "house-school";
 
-    const descriptionElement = document.createElement('li');
+    const ammenitiesElement = document.createElement("h4");
+    ammenitiesElement.innerHTML = house.amenities;
+    ammenitiesElement.className = "house-ammenities";
+
+    const descriptionElement = document.createElement('p');
     descriptionElement.innerText = house.description;
     descriptionElement.className = "house-description"
-    descriptionElement.setAttribute(
-        'style',
-        'font-size: 12px;  padding: 3px;'
-    );
+
+    // descriptionElement.setAttribute(
+    //     'style',
+    //     'font-size: 12px;  padding: 3px;'
+    // );
 
 
     const costElement = document.createElement('h3');
-    costElement.innerText = house.cost;
+    costElement.innerText = "Monthly rent: " + house.cost;
     costElement.className = 'house-price';
   
     houseElement.appendChild(nameElement);
+    houseElement.appendChild(ammenitiesElement);
     houseElement.appendChild(addressElement);
     houseElement.appendChild(schoolElement);
     houseElement.appendChild(descriptionElement);
@@ -83,16 +89,18 @@ function loadHouses() {
 function priceFilter(house) {
     // get price filer data
     try{
-        lower = document.getElementById('lower').value;
+        lower = document.getElementById('lower').value || 0;
     }
     catch{
         lower = 0;
     }
     try{
-        upper = document.getElementById('upper').value || 1200;
+        upper = document.getElementById('upper').value || 40000;
     }catch{
-        upper = 4000;
+        upper = 40000;
     }
+
     // apply filter
+    console.log([lower,upper])
     return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
   }
