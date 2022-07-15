@@ -20,16 +20,16 @@
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
-    //   // styling
-    //   houseListElement.setAttribute(
-    //       'style',
-    //       'background: #eee'
-    //   );
       houseListElement.innerHTML = '';
       
-      // filter for houses bt price
-      houses = houses.filter(priceFilter);
       
+      // filter for houses by school
+      houses = houses.filter(schoolFilter);
+      // filter for houses by price
+      houses = houses.filter(priceFilter);
+      //filter for houses by amenities
+      houses = houses.filter(amenitiesFilter);
+
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
@@ -40,11 +40,6 @@ function loadHouses() {
   function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
-    // // styling
-    // houseElement.setAttribute(
-    //     'style',
-    //     'background: #white'
-    // );
   
     const nameElement = document.createElement('h3');
     nameElement.innerText = house.name;
@@ -55,21 +50,16 @@ function loadHouses() {
     addressElement.className = "house-address";
 
     const schoolElement = document.createElement("h4");
-    schoolElement.innerHTML = house.school;
+    schoolElement.innerHTML = "School(s) nearby: " + house.school;
     schoolElement.className = "house-school";
 
     const ammenitiesElement = document.createElement("h4");
     ammenitiesElement.innerHTML = house.amenities;
-    ammenitiesElement.className = "house-ammenities";
+    ammenitiesElement.className = "house-amenities";
 
     const descriptionElement = document.createElement('p');
     descriptionElement.innerText = house.description;
     descriptionElement.className = "house-description"
-
-    // descriptionElement.setAttribute(
-    //     'style',
-    //     'font-size: 12px;  padding: 3px;'
-    // );
 
 
     const costElement = document.createElement('h3');
@@ -101,6 +91,28 @@ function priceFilter(house) {
     }
 
     // apply filter
-    console.log([lower,upper])
     return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
   }
+
+// school filter
+function schoolFilter(house) {
+    // get filter data
+    school = document.getElementById('filter-school').value.toLowerCase();
+    console.log(school)
+    // apply filter
+    if(school == ""){
+        return true
+    }
+    return house.school.toLowerCase() === school;
+}
+
+// amenities filter
+function amenitiesFilter(house) {
+    // get filter data
+    am = document.getElementById('filter-amenities').value.toLowerCase();
+    // apply filter
+    if(am == ""){
+        return true
+    }
+    return house.amenities.includes(am);
+}

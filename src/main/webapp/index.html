@@ -29,20 +29,33 @@
             </script>
 
             <!-- filter controls -->
-    
-            <!-- price filer -->
+            <div id="filters">
+                <!-- price filer -->
           
                 <h4 class="filter-title">Filter by Price</h4>
-                <span class="filter-price">
+                <span class="filter">
                     <input type="text" placeholder="800" id="lower">
                     <input type="text" placeholder="1200" id="upper">
-                    <!-- apply filers button -->
-                  <button onclick="loadHouses()">Apply filters</button>
                   </span>
 
-           
-            
+                <!-- school filer -->
+          
+                <h4 class="filter-title">Filter by School</h4>
+                <span class="filter">
+                    <input type="text" placeholder="Cal Poly" id="filter-school">
+                  </span>
 
+                <!-- amenities filer -->
+          
+                <h4 class="filter-title">Filter by Amenities</h4>
+                <span class="filter">
+                    <input type="text" placeholder="1 bedroom" id="filter-amenities">
+                  </span>
+            
+                <!-- apply filers button -->
+                <button onclick="loadHouses()">Apply filters</button>
+
+            </div>
             
      
            
