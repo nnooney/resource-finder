@@ -76,8 +76,7 @@ button:hover {
 .house-data {
     margin: 8px;
     padding: 5px;
-    font-size: 1.2rem;
-   
+    font-size:24px;
 }
 
 .house-wrapper{
@@ -99,7 +98,7 @@ article {
 }
 
 .house-data:hover {
-    border: thick rgba(0, 136, 139, 1);
+    border: thick solid rgba(0, 136, 139, 1);
 }
 
 .house-name, .house-address, .house-school, .house-description, .house-amenities, .house-price{
