@@ -13,86 +13,102 @@
 // limitations under the License.
 
 
-
-// if no value
-
 /** Fetches houses from the server and adds them to the DOM. */
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
-      // styling
-      houseListElement.setAttribute(
-          'style',
-          'background: #eee'
-      );
       houseListElement.innerHTML = '';
       
-      // filter for houses cheaper than $1000
+      // filter for houses by school
+      houses = houses.filter(schoolFilter);
+      // filter for houses by price
       houses = houses.filter(priceFilter);
+      //filter for houses by amenities
+      houses = houses.filter(amenitiesFilter);
 
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
     });
-  }
+}
   
   /** Creates an element that represents a house. */
-  function createHouseElement(house) {
+function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
-    // styling
-    houseElement.setAttribute(
-        'style',
-        'background: #white'
-    );
   
-    const nameElement = document.createElement('h3');
-    nameElement.innerText = house.name;
+    const nameElement = document.createElement('p');
+    nameElement.innerHTML = house.name + "<hr>";
     nameElement.className = 'house-name';
 
-    const addressElement = document.createElement("h4");
-    addressElement.innerHTML = house.address;
+    const addressElement = document.createElement("p");
+    addressElement.innerHTML = "<u>Address:</u> " + house.address;
     addressElement.className = "house-address";
 
-    const schoolElement = document.createElement("h4");
-    schoolElement.innerHTML = house.schoool;
+    const schoolElement = document.createElement("p");
+    schoolElement.innerHTML = "<u>School(s) nearby:</u> " + house.school;
     schoolElement.className = "house-school";
 
-    const descriptionElement = document.createElement('li');
-    descriptionElement.innerText = house.description;
+    const ammenitiesElement = document.createElement("p");
+    ammenitiesElement.innerHTML = "<u>Amenities:</u> " + house.amenities;
+    ammenitiesElement.className = "house-amenities";
+
+    const descriptionElement = document.createElement('p');
+    descriptionElement.innerHTML = "<u>Description:</u> \n" + house.description;
     descriptionElement.className = "house-description"
-    descriptionElement.setAttribute(
-        'style',
-        'font-size: 12px;  padding: 3px;'
-    );
 
 
-    const costElement = document.createElement('h3');
-    costElement.innerText = house.cost;
+    const costElement = document.createElement('p');
+    costElement.innerHTML = "<u>Monthly rent:</u> $ " + house.cost;
     costElement.className = 'house-price';
   
     houseElement.appendChild(nameElement);
     houseElement.appendChild(addressElement);
     houseElement.appendChild(schoolElement);
+    houseElement.appendChild(ammenitiesElement);
     houseElement.appendChild(descriptionElement);
     houseElement.appendChild(costElement);
     return houseElement;
-  }
+}
 
 //   filer list of houses fetched from datasotre by price
 function priceFilter(house) {
     // get price filer data
     try{
-        lower = document.getElementById('lower').value;
+        lower = document.getElementById('lower').value || 0;
     }
     catch{
         lower = 0;
     }
     try{
-        upper = document.getElementById('upper').value || 1200;
+        upper = document.getElementById('upper').value || 40000;
     }catch{
-        upper = 4000;
+        upper = 40000;
     }
+
     // apply filter
     return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
   }
+
+// school filter
+function schoolFilter(house) {
+    // get filter data
+    school = document.getElementById('filter-school').value.toLowerCase();
+    console.log(school)
+    // apply filter
+    if(school == ""){
+        return true
+    }
+    return house.school.toLowerCase() === school;
+}
+
+// amenities filter
+function amenitiesFilter(house) {
+    // get filter data
+    am = document.getElementById('filter-amenities').value.toLowerCase();
+    // apply filter
+    if(am == ""){
+        return true
+    }
+    return house.amenities.includes(am);
+}

@@ -10,11 +10,11 @@
 
   <body>
         <header>
-            <h1 class="logo">Resource Finder</h1>
+            <h1 class="logo">Home Finder</h1>
             <nav>
                 <ul class="nav-link">
                     <li><a href="index.html">View</a></li>
-                    <li><a href="#">Add</a></li>
+                    <li><a href="/add_listing.html">Add</a></li>
                     <li><a href="#">Review</a></li>
                 </ul>
             </nav>
@@ -27,30 +27,26 @@
             <form method="POST" action="/new-house" id="add-listing-form">
 
                 <!-- title -->
-                <h2>Add your add_listing</h2>
+                <h2>Add to House Listing</h2>
 
                 <label for="name">Title</label>
-                <input type="text" id="name" name="name" class="house-name" placeholder="1-bed apartment on Foster Street">
+                <input type="text" id="name" name="name" class="house-name" placeholder=" 1-bed apartment on Foster Street">
 
                 <label for="address">Address</label>
-                <input type="text" id="address" name="address" class="house-address" placeholder="702 Foster Street Unit B">
+                <input type="text" id="address" name="address" class="house-address" placeholder=" 702 Foster Street Unit B">
 
-                <label for="school">School</label>
-                <input type="text" id="address" name="school" class="house-school" placeholder="Cal Poly Pomona">
+                <label for="school">Schools Nearby</label>
+                <input type="text" id="school" name="school" class="house-school" placeholder=" Cal Poly Pomona">
+
+                <label for="amenities">Amenities</label>
+                <input type="text" id="amenities" name="amenities" class="house-amenities" placeholder=" 1 bedroom, 1 bathroom">
                 
-                <label for="cost">Price</label>
-                <input type="text" id="cost" name="cost"  class="house-price" placeholder="$800">
+                <label for="cost">Monthly Rent</label>
+                <span>$ <input type="text" id="cost" name="cost" class="house-price" placeholder=" 800"></span>
 
                 <label for="description">Description</label>
-                <input type="text" id="description" name="description" class="house-description" placeholder="1-bedroom with clean shared kitchen and bath...">
+                <input type="text" id="description" name="description" class="house-description" placeholder=" 1-bedroom with clean shared kitchen and bath...">
 
-                 <!-- Additional Features-->
-                
-                
-                <!--<label for="distance">Distance</label>
-                <input type="text" id="distance" name="distance" placeholder="0.3 miles (2 mins walk) from EveRy University">
-                <label for="type">Type</label>
-                <input type="text" id="type" name="type" placeholder="1 bedroom"> -->
                 <button>Submit</button>
             </form>
 

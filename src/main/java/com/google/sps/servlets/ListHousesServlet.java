@@ -34,12 +34,13 @@ public class ListHousesServlet  extends HttpServlet {
       long id = entity.getKey().getId();
       String name = entity.getString("name");
       String description = entity.getString("description");
+      String amenities = entity.getString("amenities");
       String address = entity.getString("address");
       String school = entity.getString("school");
       String cost = entity.getString("cost");
       long timestamp = entity.getLong("timestamp");
 
-      House house = new House(id, name, description, address, school, cost , timestamp);
+      House house = new House(id, name, amenities, description, address, school, cost , timestamp);
       houses.add(house);
     }
 

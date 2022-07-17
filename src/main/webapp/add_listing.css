@@ -1,62 +1,67 @@
 /* header and whole-page styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Permanent+Marker&display=swap');
+
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     background-color: white;
-  }
+    font-family: 'Fredoka One', cursive;
+}
   
-  .logo {
-      color: black;
-      cursor: pointer;
-      margin-right: auto;
-  }
+.logo {
+    color: black;
+    cursor: pointer;
+    margin-right: auto;
+    font-family: 'Permanent Marker', cursive;
+}
   
-  li, a, button {
-      font-weight: 500;
-      font-size: 16px;
-      color: black;
-      text-decoration: none;
-  }
+li, a, button {
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+}
   
-  header{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding: 30px 10%;
-  }
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+}
   
-  .nav-link {
-      list-style: none;
-  }
+.nav-link {
+    list-style: none;
+}
   
-  .nav-link li {
-      display: inline-block;
-      padding: 0px 20px;
-  }
+.nav-link li {
+    display: inline-block;
+    padding: 0px 20px;
+}
   
-  .nav-link li a {
-      transition: all 0.3s ease 0s;
-  }
+.nav-link li a {
+    transition: all 0.3s ease 0s;
+}
   
-  .nav-link li a:hover {
-      color: blue;
-  }
+.nav-link li a:hover {
+    color: rgba(0, 136, 139, 1);
+}
   
 button {
-      padding: 9px 25px;
-      background-color: rgba(0, 136, 139, 1);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease 0s;
-      margin-top: 20px;
-  }
+    padding: 9px 25px;
+    background-color: rgba(0, 136, 139, 1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    margin-top: 20px;
+}
   
 button:hover {
-      background-color: rgba(0, 136, 169, 0.8);
-  }
+    background-color: rgba(0, 136, 169, 0.8);
+}
 
 .page-content {
     background-color: #eee;
@@ -73,32 +78,36 @@ button:hover {
     flex-direction: column;
     background-color: transparent;
     justify-content: start;
+    font-weight: lighter;
 }
 
 #add-listing-form label{
     margin:auto;
     margin-top: 20px;
     margin-left: 0px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     background-color: transparent;
+    font-weight: lighter;
 }
 
 h2 {
     margin-top: 20px;
     background-color: transparent;
+    font-weight: lighter;
 }
 
 #add-listing-form input{
     height: 40px;
     border-radius: 5px;
+    padding-left: 10px;
+    font-weight: lighter;
 }
 
 input::placeholder {
     color: rgb(114, 111, 111);
 }
 
-/*#add-listing-form button{
-    background-color: transparent;
-    border: solid 3px black;
-    border-radius: 5px;
-}*/
+span {
+    background-color: #eee
+}
+

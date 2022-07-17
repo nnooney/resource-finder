@@ -22,6 +22,7 @@ public class NewHouseServlet extends HttpServlet {
     // Sanitize user input to remove HTML tags and JavaScript.
     String name = Jsoup.clean(request.getParameter("name"), Safelist.none());
     String address = Jsoup.clean(request.getParameter("address"), Safelist.none());
+    String amenities = Jsoup.clean(request.getParameter("amenities"), Safelist.none());
     String school = Jsoup.clean(request.getParameter("school"), Safelist.none());
     String description = Jsoup.clean(request.getParameter("description"), Safelist.none());
     String cost = Jsoup.clean(request.getParameter("cost"), Safelist.none()); /**cost is in int or long */
@@ -33,6 +34,7 @@ public class NewHouseServlet extends HttpServlet {
         Entity.newBuilder(keyFactory.newKey())
             .set("name", name)
             .set("address", address)
+            .set("amenities", amenities)
             .set("school", school)
             .set("description", description)
             .set("cost", cost)
