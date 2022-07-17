@@ -1,14 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Permanent+Marker&display=swap');
+
+
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  background-color: white;
-}
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: 'Fredoka One', cursive;
+  }
 
 .logo {
     color: black;
     cursor: pointer;
     margin-right: auto;
+    font-family: 'Permanent Marker', cursive;
 }
 
 li, a, button {
@@ -19,12 +24,11 @@ li, a, button {
 }
 
 header{
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 30px 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
 }
-
 .nav-link {
     list-style: none;
 }
@@ -36,6 +40,7 @@ header{
 
 .nav-link li a {
     transition: all 0.3s ease 0s;
+
 }
 
 .nav-link li a:hover {
@@ -43,37 +48,28 @@ header{
 }
 
 button {
-    padding: 9px 25px;
+    padding: 5px 10px;
     background-color: rgba(0, 136, 139, 1);
     border: none;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
+    font-size: 1rem;
+    margin: 8px;
 }
 
 button:hover {
     background-color: rgba(0, 136, 169, 0.8);
 }
 
-.filter-title, .filter-price{
-    margin: 8px;
-    padding: 5px;
-    font-size: 1rem;
-    background-color: #eee;
-}
-
-.filter-price button{
-    padding: 4px 20px;
-
-}
 .house-list {
     background-color: #eee;
     padding: 30px 10%;
-
 }
 
 .house-list h2 {
     background-color: #eee;
+    font-weight: lighter;
 }
 
 .house-list > h2, 
@@ -93,32 +89,31 @@ button:hover {
 article {
     background:#eee;    
 }
+
 .house-data {
     padding: 9px 25px;
     border-radius: 10px;
     background: white;   
     display: block;
+    
 }
 
-.house-name, .house-address, .house-school, .house-description, .house-price{
+.house-data:hover {
+    border: thick rgba(0, 136, 139, 1);
+}
+
+.house-name, .house-address, .house-school, .house-description, .house-amenities, .house-price{
     margin-right: auto;
     padding: 5px;
+    font-weight: lighter;
 }
 
 .house-name{
     font-size: 20px;
 }
-.house-address, .house-school, .house-amenities{
-    font-size: 16px;
-}
-.house-description {
-    font-size: 12px;
-    padding: 3px;
-}
 
-.house-price{
-    font-size: 15px;
-    width: 100%;
+.house-address, .house-school, .house-amenities, .house-description, .house-price{
+    font-size: 14px;
 }
 
 /* filter styles */
@@ -126,5 +121,35 @@ article {
     display: flex;
     flex-direction: row;
     justify-content: baseline;    
+    background: #eee;
+    justify-content: space-between;
+}
+
+.filter {
+    background: #eee;
+    padding: 10px;
+}
+
+.filter-title{
+    margin: 8px;
+    padding: 5px;
+    font-size: 1rem;
+    background-color: #eee;
+    font-weight: lighter;
+
+}
+
+input {
+    border-radius: 3px;
+    padding: 3px;
+    padding-left: 10px;
+}
+
+.house-name hr{
+    margin-top: 10px;
+    border: 0;
+    border-radius: 10px;
+    height: 2px;
+    background: #a9a9a9;
 }
 

@@ -13,15 +13,11 @@
 // limitations under the License.
 
 
-
-// if no value
-
 /** Fetches houses from the server and adds them to the DOM. */
 function loadHouses() {
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
       houseListElement.innerHTML = '';
-      
       
       // filter for houses by school
       houses = houses.filter(schoolFilter);
@@ -34,46 +30,46 @@ function loadHouses() {
         houseListElement.appendChild(createHouseElement(house));
       })
     });
-  }
+}
   
   /** Creates an element that represents a house. */
-  function createHouseElement(house) {
+function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
   
-    const nameElement = document.createElement('h3');
-    nameElement.innerText = house.name;
+    const nameElement = document.createElement('p');
+    nameElement.innerHTML = house.name + "<hr>";
     nameElement.className = 'house-name';
 
-    const addressElement = document.createElement("h4");
-    addressElement.innerHTML = house.address;
+    const addressElement = document.createElement("p");
+    addressElement.innerHTML = "<u>Address:</u> " + house.address;
     addressElement.className = "house-address";
 
-    const schoolElement = document.createElement("h4");
-    schoolElement.innerHTML = "School(s) nearby: " + house.school;
+    const schoolElement = document.createElement("p");
+    schoolElement.innerHTML = "<u>School(s) nearby:</u> " + house.school;
     schoolElement.className = "house-school";
 
-    const ammenitiesElement = document.createElement("h4");
-    ammenitiesElement.innerHTML = house.amenities;
+    const ammenitiesElement = document.createElement("p");
+    ammenitiesElement.innerHTML = "<u>Amenities:</u> " + house.amenities;
     ammenitiesElement.className = "house-amenities";
 
     const descriptionElement = document.createElement('p');
-    descriptionElement.innerText = house.description;
+    descriptionElement.innerHTML = "<u>Description:</u> \n" + house.description;
     descriptionElement.className = "house-description"
 
 
-    const costElement = document.createElement('h3');
-    costElement.innerText = "Monthly rent: " + house.cost;
+    const costElement = document.createElement('p');
+    costElement.innerHTML = "<u>Monthly rent:</u> $ " + house.cost;
     costElement.className = 'house-price';
   
     houseElement.appendChild(nameElement);
-    houseElement.appendChild(ammenitiesElement);
     houseElement.appendChild(addressElement);
     houseElement.appendChild(schoolElement);
+    houseElement.appendChild(ammenitiesElement);
     houseElement.appendChild(descriptionElement);
     houseElement.appendChild(costElement);
     return houseElement;
-  }
+}
 
 //   filer list of houses fetched from datasotre by price
 function priceFilter(house) {

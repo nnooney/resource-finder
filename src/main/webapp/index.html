@@ -8,63 +8,51 @@
   </head>
 
   <body>
-          <header>
-              <h1 class="logo">Home Finder</h1>
-              <nav>
-                  <ul class="nav-link">
-                      <li><a href="#">View</a></li>
-                      <li><a href="/add_listing.html">Add</a></li>
-                      <li><a href="#">Review</a></li>
-                  </ul>
-              </nav>
-              <!--<a class="log-in" a href="#"><button>Log In</button></a>-->
-          </header>
+      <header>
+          <h1 class="logo">Home Finder</h1>
+          <nav>
+              <ul class="nav-link">
+                  <li><a href="index.html">View</a></li>
+                  <li><a href="/add_listing.html">Add</a></li>
+                  <li><a href="#">Review</a></li>
+              </ul>
+          </nav>
+      </header>
 
-          
-          
-          <section class="house-list page-content">
+  
+      <section class="house-list page-content">
+          <script>loadHouses();</script>
 
-            <script>
-                loadHouses();
-            </script>
-
-            <!-- filter controls -->
-            <div id="filters">
-                <!-- price filer -->
-          
-                <h4 class="filter-title">Filter by Price</h4>
-                <span class="filter">
-                    <input type="text" placeholder="800" id="lower">
-                    <input type="text" placeholder="1200" id="upper">
+          <!-- filter controls -->
+          <div id="filters">
+              <!-- school filer -->
+              <h4 class="filter-title">School: </h4>
+                  <span class="filter">
+                      <input type="text" placeholder="Cal Poly" id="filter-school">
                   </span>
 
-                <!-- school filer -->
-          
-                <h4 class="filter-title">Filter by School</h4>
-                <span class="filter">
-                    <input type="text" placeholder="Cal Poly" id="filter-school">
+              <!-- amenities filer -->
+              <h4 class="filter-title">Amenities: </h4>
+                  <span class="filter">
+                      <input type="text" placeholder="1 bedroom" id="filter-amenities">
                   </span>
 
-                <!-- amenities filer -->
-          
-                <h4 class="filter-title">Filter by Amenities</h4>
-                <span class="filter">
-                    <input type="text" placeholder="1 bedroom" id="filter-amenities">
+              <!-- price filer -->
+              <h4 class="filter-title">Price: </h4>
+                  <span class="filter">
+                      <input type="text" placeholder="800" id="lower"> -
+                      <input type="text" placeholder="1200" id="upper">
                   </span>
+
+              <!-- apply filers button -->
+              <button onclick="loadHouses()">Apply filters</button>
+
+          </div>
             
-                <!-- apply filers button -->
-                <button onclick="loadHouses()">Apply filters</button>
+          <!-- listings -->
+          <h2>List of Recommended Housing</h2>
+          <div id="house-list" class="house-wrapper"></div>
 
-            </div>
-            
-     
-           
-            <!-- listings -->
-            <h2>List of Recommended Housing</h2>
-            <div id="house-list" class="house-wrapper">
-
-            </div>
-
-        </section>
+      </section>
   </body>
 </html>
