@@ -15,24 +15,27 @@
 
 /** Fetches houses from the server and adds them to the DOM. */
 function loadHouses() {
+    
+    // fetch data
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
       houseListElement.innerHTML = '';
+
+      perfTestFilter(houses);
+
+      houses = filterHouses(houses);
       
-      // filter for houses by school
-      houses = houses.filter(schoolFilter);
-      // filter for houses by price
-      houses = houses.filter(priceFilter);
-      //filter for houses by amenities
-      houses = houses.filter(amenitiesFilter);
+      // perfTestElement(houses);
 
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
+
+
     });
 }
   
-  /** Creates an element that represents a house. */
+/** Creates an element that represents a house. */
 function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
@@ -71,6 +74,19 @@ function createHouseElement(house) {
     return houseElement;
 }
 
+// filter
+function filterHouses(houses){
+    
+    // filter for houses by school
+    houses = houses.filter(schoolFilter);
+    // filter for houses by price
+    houses = houses.filter(priceFilter);
+    //filter for houses by amenities
+    houses = houses.filter(amenitiesFilter);
+    
+    return houses;
+}
+
 //   filer list of houses fetched from datasotre by price
 function priceFilter(house) {
     // get price filer data
@@ -94,7 +110,6 @@ function priceFilter(house) {
 function schoolFilter(house) {
     // get filter data
     school = document.getElementById('filter-school').value.toLowerCase();
-    console.log(school)
     // apply filter
     if(school == ""){
         return true
@@ -112,3 +127,43 @@ function amenitiesFilter(house) {
     }
     return house.amenities.includes(am);
 }
+
+// performance testing
+function perfTestFilter(houses){
+
+    // test time taken by 1 run of the filtering algorithm
+    let startTime = performance.now();
+    //console.time("timer1")
+    for(i=0; i<10; i++){
+        console.time("timer1")
+        filterHouses(houses);
+        console.timeEnd("timer1")
+    }
+    //console.timeEnd("timer1")
+    let endTime = performance.now();
+    let avgResponseTime = (endTime - startTime) / 10;
+    
+    console.log("average response time per run: " + avgResponseTime)
+    
+}
+
+// performance testing
+function perfTestElement(houses){
+    const houseListElement = document.getElementById('house-list');
+    // test time taken by 1 run of the filtering algorithm
+    let startTime = performance.now();
+    //console.time("timer1")
+    for(i=0; i<10; i++){
+        houses.forEach((house) => {
+            houseListElement.appendChild(createHouseElement(house));
+          })
+    }
+    //console.timeEnd("timer1")
+    let endTime = performance.now();
+    let avgResponseTime = (endTime - startTime) / 10;
+    
+    console.log("average time to display: " + avgResponseTime)
+    houseListElement.innerHTML = '';
+
+}
+
