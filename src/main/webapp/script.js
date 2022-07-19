@@ -25,7 +25,7 @@ function loadHouses() {
 
       houses = filterHouses(houses);
       
-      // perfTestElement(houses);
+      perfTestElement(houses);
 
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
