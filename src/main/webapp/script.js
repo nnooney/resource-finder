@@ -74,21 +74,9 @@ function createHouseElement(house) {
     return houseElement;
 }
 
-// filter
-function filterHouses(houses){
-    
-    // filter for houses by school
-    houses = houses.filter(schoolFilter);
-    // filter for houses by price
-    houses = houses.filter(priceFilter);
-    //filter for houses by amenities
-    houses = houses.filter(amenitiesFilter);
-    
-    return houses;
-}
-
-//   filer list of houses fetched from datasotre by price
-function priceFilter(house) {
+// new filter function
+function filterHouse(house){
+    // PRICE FILTER
     // get price filer data
     try{
         lower = document.getElementById('lower').value || 0;
@@ -101,32 +89,36 @@ function priceFilter(house) {
     }catch{
         upper = 40000;
     }
-
-    // apply filter
-    return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
-  }
-
-// school filter
-function schoolFilter(house) {
-    // get filter data
-    school = document.getElementById('filter-school').value.toLowerCase();
-    // apply filter
-    if(school == ""){
-        return true
+    if (parseInt(house.cost) > upper || parseInt(house.cost) < lower){
+        return false
     }
-    return house.school.toLowerCase() === school;
-}
 
-// amenities filter
-function amenitiesFilter(house) {
+    // SCHOOL FILTER
+    // get school filter data
+    school = document.getElementById('filter-school').value.toLowerCase();
+    if(school != "" && house.school.toLowerCase() !== school){
+        return false
+    }
+
+    // AMENITIES FILTER
     // get filter data
     am = document.getElementById('filter-amenities').value.toLowerCase();
-    // apply filter
-    if(am == ""){
-        return true
+    if(am != "" && !house.amenities.includes(am)){
+        return false;
     }
-    return house.amenities.includes(am);
+
+    return true;
+
 }
+
+// filter
+function filterHouses(houses){
+    houses = houses.filter(filterHouse);
+    
+    return houses;
+    
+}
+
 
 // performance testing
 function perfTestFilter(houses){
