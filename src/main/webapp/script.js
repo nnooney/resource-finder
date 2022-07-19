@@ -74,7 +74,7 @@ function createHouseElement(house) {
     return houseElement;
 }
 
-// new filter function
+// filter function
 function filterHouse(house){
     // PRICE FILTER
     // get price filer data
@@ -125,13 +125,11 @@ function perfTestFilter(houses){
 
     // test time taken by 1 run of the filtering algorithm
     let startTime = performance.now();
-    //console.time("timer1")
     for(i=0; i<10; i++){
         console.time("timer1")
         filterHouses(houses);
         console.timeEnd("timer1")
     }
-    //console.timeEnd("timer1")
     let endTime = performance.now();
     let avgResponseTime = (endTime - startTime) / 10;
     
@@ -142,15 +140,13 @@ function perfTestFilter(houses){
 // performance testing
 function perfTestElement(houses){
     const houseListElement = document.getElementById('house-list');
-    // test time taken by 1 run of the filtering algorithm
+    // test time taken by building the house list html after filtering
     let startTime = performance.now();
-    //console.time("timer1")
     for(i=0; i<10; i++){
         houses.forEach((house) => {
             houseListElement.appendChild(createHouseElement(house));
           })
     }
-    //console.timeEnd("timer1")
     let endTime = performance.now();
     let avgResponseTime = (endTime - startTime) / 10;
     
