@@ -15,24 +15,27 @@
 
 /** Fetches houses from the server and adds them to the DOM. */
 function loadHouses() {
+    
+    // fetch data
     fetch('/list-houses').then(response => response.json()).then((houses) => {
       const houseListElement = document.getElementById('house-list');
       houseListElement.innerHTML = '';
+
+      perfTestFilter(houses);
+
+      houses = filterHouses(houses);
       
-      // filter for houses by school
-      houses = houses.filter(schoolFilter);
-      // filter for houses by price
-      houses = houses.filter(priceFilter);
-      //filter for houses by amenities
-      houses = houses.filter(amenitiesFilter);
+      perfTestElement(houses);
 
       houses.forEach((house) => {
         houseListElement.appendChild(createHouseElement(house));
       })
+
+
     });
 }
   
-  /** Creates an element that represents a house. */
+/** Creates an element that represents a house. */
 function createHouseElement(house) {
     const houseElement = document.createElement('article');
     houseElement.className = 'house-data';
@@ -71,8 +74,9 @@ function createHouseElement(house) {
     return houseElement;
 }
 
-//   filer list of houses fetched from datasotre by price
-function priceFilter(house) {
+// filter function
+function filterHouse(house){
+    // PRICE FILTER
     // get price filer data
     try{
         lower = document.getElementById('lower').value || 0;
@@ -85,30 +89,69 @@ function priceFilter(house) {
     }catch{
         upper = 40000;
     }
-
-    // apply filter
-    return (parseInt(house.cost) <= upper && parseInt(house.cost) >= lower);
-  }
-
-// school filter
-function schoolFilter(house) {
-    // get filter data
-    school = document.getElementById('filter-school').value.toLowerCase();
-    console.log(school)
-    // apply filter
-    if(school == ""){
-        return true
+    if (parseInt(house.cost) > upper || parseInt(house.cost) < lower){
+        return false
     }
-    return house.school.toLowerCase() === school;
-}
 
-// amenities filter
-function amenitiesFilter(house) {
+    // SCHOOL FILTER
+    // get school filter data
+    school = document.getElementById('filter-school').value.toLowerCase();
+    if(school != "" && house.school.toLowerCase() !== school){
+        return false
+    }
+
+    // AMENITIES FILTER
     // get filter data
     am = document.getElementById('filter-amenities').value.toLowerCase();
-    // apply filter
-    if(am == ""){
-        return true
+    if(am != "" && !house.amenities.includes(am)){
+        return false;
     }
-    return house.amenities.includes(am);
+
+    return true;
+
 }
+
+// filter
+function filterHouses(houses){
+    houses = houses.filter(filterHouse);
+    
+    return houses;
+    
+}
+
+
+// performance testing
+function perfTestFilter(houses){
+
+    // test time taken by 1 run of the filtering algorithm
+    let startTime = performance.now();
+    for(i=0; i<10; i++){
+        console.time("timer1")
+        filterHouses(houses);
+        console.timeEnd("timer1")
+    }
+    let endTime = performance.now();
+    let avgResponseTime = (endTime - startTime) / 10;
+    
+    console.log("average response time per run: " + avgResponseTime)
+    
+}
+
+// performance testing
+function perfTestElement(houses){
+    const houseListElement = document.getElementById('house-list');
+    // test time taken by building the house list html after filtering
+    let startTime = performance.now();
+    for(i=0; i<10; i++){
+        houses.forEach((house) => {
+            houseListElement.appendChild(createHouseElement(house));
+          })
+    }
+    let endTime = performance.now();
+    let avgResponseTime = (endTime - startTime) / 10;
+    
+    console.log("average time to display: " + avgResponseTime)
+    houseListElement.innerHTML = '';
+
+}
+
